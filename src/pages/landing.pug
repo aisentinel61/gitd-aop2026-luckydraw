@@ -10,9 +10,9 @@ include ../mixins/icons
   canvas#confetti-canvas.confetti
 
   #lucky-draw
-    .title
-      //- Pug loader currently does not handle webpack alias so we will use relative path here
-      include ../assets/images/title.svg
+    .logo-container
+      img.main-logo(src="~@images/logo_smash_on_gitd.png" alt="Pickleball Smash On")
+    .lucky-draw-title Lucky Draw
 
     .slot
       .slot__outer

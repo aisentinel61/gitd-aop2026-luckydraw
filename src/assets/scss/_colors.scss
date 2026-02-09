@@ -4,41 +4,42 @@ $color-mid-grey: #999999;
 $color-dark-grey: #666666;
 $color-black: #000000;
 
-$color-red-step1: #ff462d;
-$color-red-step2: #ff422f;
-$color-red-step3: #ff3634;
-$color-red-step4: #ff223c;
-$color-red-step5: #ff0c45;
-
-$color-yellow: #ffbf1f;
-$color-blood-orange: #e54c23;
+// Pickleball Smash On brand colors
+$color-cyan: #00e5ff; // Main cyan from logo
+$color-turquoise: #00d4e4; // Turquoise variant
+$color-navy-blue: #0a1f5c; // Dark blue from logo
+$color-royal-blue: #1e3a8a; // Royal blue
+$color-bright-orange: #ff6b35; // Orange accent from ribbon
+$color-red-orange: #ff4500; // Red-orange variant
+$color-yellow-accent: #ffd700; // Yellow from pickleball badge
 $color-shadow: rgba($color-black, 0.2);
 
 // body
 $color-text-light: $color-white;
-$color-text-dark: $color-black;
-$color-link: rgba($color-white, 0.8);
-$color-link-hover: rgba($color-white, 0.9);
+$color-text-dark: $color-navy-blue;
+$color-link: rgba($color-cyan, 0.9);
+$color-link-hover: $color-cyan;
 
 // title
-$color-title-border: $color-yellow;
+$color-title-text: $color-cyan;
+$color-subtitle-text: $color-yellow-accent;
 
 // button
 $color-button-text: $color-white;
-$color-button-default-background: $color-yellow;
-$color-button-default-hover-background: lighten($color-yellow, 5%);
-$color-button-danger-background: $color-blood-orange;
-$color-button-danger-hover-background: lighten($color-blood-orange, 5%);
+$color-button-default-background: $color-bright-orange;
+$color-button-default-hover-background: $color-red-orange;
+$color-button-danger-background: $color-red-orange;
+$color-button-danger-hover-background: #cc3700;
 
 // slot
-$color-slot-background: $color-yellow;
+$color-slot-background: $color-bright-orange;
 $color-slot-shadow: $color-shadow;
 $color-slot-inner-background: $color-white;
-$color-slot-text: $color-black;
+$color-slot-text: $color-navy-blue;
 
 // settings
-$color-settings-mask: rgba($color-black, 0.6);
-$color-settings-background: darken($color-red-step5, 8%);
+$color-settings-mask: rgba($color-black, 0.7);
+$color-settings-background: $color-navy-blue;
 
 // textarea
 $color-input-background: $color-light-grey;
@@ -47,4 +48,4 @@ $color-input-text: $color-black;
 
 // switch
 $color-switch-handle-disabled: $color-dark-grey;
-$color-switch-handle: darken($color-red-step5, 8%);
+$color-switch-handle: $color-cyan;

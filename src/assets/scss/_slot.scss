@@ -5,27 +5,87 @@
   z-index: $z-index-lucky-draw; // make sure contents are on top of confetting
 }
 
-.title {
-  height: auto;
-  max-width: $title-width;
-  width: 100%;
-  margin: $title-margin-top 0 $title-margin-bottom 0;
+.logo-container {
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto 1rem;
   position: relative;
-  z-index: $z-index-title; // make sure title on top of sunburst
-  color: $color-title-border;
-  display: inline-block;
+  z-index: $z-index-title;
+  text-align: center;
 
-  @each $media-query, $factor in $scale-factors {
-    @media #{$media-query} {
-      max-width: $title-width * $factor;
-      margin: $title-margin-top 0 $title-margin-bottom * $factor 0;
+  @each $name, $factor in $scale-factors {
+    @if $name == 'medium-desktop' {
+      @media #{$medium-desktop} {
+        max-width: 600px * $factor;
+        margin: 2rem * $factor auto 1rem * $factor;
+      }
+    } @else if $name == 'small-desktop' {
+      @media #{$small-desktop} {
+        max-width: 600px * $factor;
+        margin: 2rem * $factor auto 1rem * $factor;
+      }
+    } @else if $name == 'tablet' {
+      @media #{$tablet} {
+        max-width: 600px * $factor;
+        margin: 2rem * $factor auto 1rem * $factor;
+      }
+    } @else if $name == 'mobile' {
+      @media #{$mobile} {
+        max-width: 600px * $factor;
+        margin: 1.5rem * $factor auto 0.5rem * $factor;
+      }
     }
   }
 
-  svg {
+  .main-logo {
     width: 100%;
     height: auto;
     display: block;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.lucky-draw-title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  color: $color-subtitle-text;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 1.5rem 0 3rem;
+  position: relative;
+  z-index: $z-index-title;
+  text-shadow:
+    2px 2px 0 $color-navy-blue,
+    -2px -2px 0 $color-navy-blue,
+    2px -2px 0 $color-navy-blue,
+    -2px 2px 0 $color-navy-blue,
+    0 0 20px rgba(0, 229, 255, 0.5);
+
+  @each $name, $factor in $scale-factors {
+    @if $name == 'medium-desktop' {
+      @media #{$medium-desktop} {
+        font-size: 4rem * $factor;
+        margin: 1.5rem * $factor 0 3rem * $factor;
+      }
+    } @else if $name == 'small-desktop' {
+      @media #{$small-desktop} {
+        font-size: 4rem * $factor;
+        margin: 1.5rem * $factor 0 3rem * $factor;
+      }
+    } @else if $name == 'tablet' {
+      @media #{$tablet} {
+        font-size: 4rem * $factor;
+        margin: 1.5rem * $factor 0 2.5rem * $factor;
+        letter-spacing: 0.15em;
+      }
+    } @else if $name == 'mobile' {
+      @media #{$mobile} {
+        font-size: 4rem * $factor;
+        margin: 1rem * $factor 0 2rem * $factor;
+        letter-spacing: 0.1em;
+      }
+    }
   }
 }
 
@@ -95,15 +155,50 @@
     border-bottom-left-radius: $slot-border-radius;
   }
 
-  @each $media-query, $factor in $scale-factors {
-    @media #{$media-query} {
-      width: $slot-width * $factor;
-      height: $slot-height * $factor;
-      margin: 0 auto;
+  @each $name, $factor in $scale-factors {
+    @if $name == 'medium-desktop' {
+      @media #{$medium-desktop} {
+        width: $slot-width * $factor;
+        height: $slot-height * $factor;
+        margin: 0 auto;
 
-      &__outer {
-        transform: scale($factor);
-        transform-origin: top left;
+        &__outer {
+          transform: scale($factor);
+          transform-origin: top left;
+        }
+      }
+    } @else if $name == 'small-desktop' {
+      @media #{$small-desktop} {
+        width: $slot-width * $factor;
+        height: $slot-height * $factor;
+        margin: 0 auto;
+
+        &__outer {
+          transform: scale($factor);
+          transform-origin: top left;
+        }
+      }
+    } @else if $name == 'tablet' {
+      @media #{$tablet} {
+        width: $slot-width * $factor;
+        height: $slot-height * $factor;
+        margin: 0 auto;
+
+        &__outer {
+          transform: scale($factor);
+          transform-origin: top left;
+        }
+      }
+    } @else if $name == 'mobile' {
+      @media #{$mobile} {
+        width: $slot-width * $factor;
+        height: $slot-height * $factor;
+        margin: 0 auto;
+
+        &__outer {
+          transform: scale($factor);
+          transform-origin: top left;
+        }
       }
     }
   }
@@ -111,17 +206,29 @@
 
 .reel {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   > div {
-    height: $reel-item-height;
+    width: 100%;
+    min-height: $reel-item-height;
     font-size: 3.75rem;
     font-weight: bold;
     text-align: center;
-    line-height: $reel-item-height;
+    line-height: 1.2;
     color: $color-slot-text;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    overflow: visible;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
     /* enable gpu accelaration to fix iOS flicker issue */
     transform: translate3d(0, 0, 0);
   }
@@ -134,15 +241,47 @@
   position: relative;
   z-index: $z-index-draw-button; // make sure draw button on top of sunburst
 
-  @each $media-query, $factor in $scale-factors {
-    @media #{$media-query} {
-      width: $draw-button-width * $factor;
-      margin: $draw-button-margin-top * $factor 0 0;
-      font-size: max((1.75rem * $factor), 1rem);
-      line-height: max((1.75rem * $factor), 1rem);
-      padding: 1rem * $factor 0.625rem * $factor;
-      border-radius: 0.625rem * $factor;
-      @include shadow('large', $factor);
+  @each $name, $factor in $scale-factors {
+    @if $name == 'medium-desktop' {
+      @media #{$medium-desktop} {
+        width: $draw-button-width * $factor;
+        margin: $draw-button-margin-top * $factor 0 0;
+        font-size: max((1.75rem * $factor), 1rem);
+        line-height: max((1.75rem * $factor), 1rem);
+        padding: 1rem * $factor 0.625rem * $factor;
+        border-radius: 0.625rem * $factor;
+        @include shadow('large', $factor);
+      }
+    } @else if $name == 'small-desktop' {
+      @media #{$small-desktop} {
+        width: $draw-button-width * $factor;
+        margin: $draw-button-margin-top * $factor 0 0;
+        font-size: max((1.75rem * $factor), 1rem);
+        line-height: max((1.75rem * $factor), 1rem);
+        padding: 1rem * $factor 0.625rem * $factor;
+        border-radius: 0.625rem * $factor;
+        @include shadow('large', $factor);
+      }
+    } @else if $name == 'tablet' {
+      @media #{$tablet} {
+        width: $draw-button-width * $factor;
+        margin: $draw-button-margin-top * $factor 0 0;
+        font-size: max((1.75rem * $factor), 1rem);
+        line-height: max((1.75rem * $factor), 1rem);
+        padding: 1rem * $factor 0.625rem * $factor;
+        border-radius: 0.625rem * $factor;
+        @include shadow('large', $factor);
+      }
+    } @else if $name == 'mobile' {
+      @media #{$mobile} {
+        width: $draw-button-width * $factor;
+        margin: $draw-button-margin-top * $factor 0 0;
+        font-size: max((1.75rem * $factor), 1rem);
+        line-height: max((1.75rem * $factor), 1rem);
+        padding: 1rem * $factor 0.625rem * $factor;
+        border-radius: 0.625rem * $factor;
+        @include shadow('large', $factor);
+      }
     }
   }
 }

@@ -4,10 +4,10 @@ $small-desktop-scale-factor: 0.66;
 $tablet-scale-factor: 0.5;
 $mobile-scale-factor: 0.288;
 $scale-factors: (
-  $medium-desktop: $medium-desktop-scale-factor,
-  $small-desktop: $small-desktop-scale-factor,
-  $tablet: $tablet-scale-factor,
-  $mobile: $mobile-scale-factor,
+  'medium-desktop': $medium-desktop-scale-factor,
+  'small-desktop': $small-desktop-scale-factor,
+  'tablet': $tablet-scale-factor,
+  'mobile': $mobile-scale-factor,
 );
 
 // z-index

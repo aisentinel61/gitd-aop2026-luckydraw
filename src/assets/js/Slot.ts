@@ -70,15 +70,12 @@ export default class Slot {
     this.onSpinEnd = onSpinEnd;
     this.onNameListChanged = onNameListChanged;
 
-    // Create reel animation
+    // Create reel animation (will be updated dynamically during spin)
     this.reelAnimation = this.reelContainer?.animate(
       [
         { transform: 'none', filter: 'blur(0)' },
         { filter: 'blur(1px)', offset: 0.5 },
-        // Here we transform the reel to move up and stop at the top of last item
-        // "(Number of item - 1) * height of reel item" of wheel is the amount of pixel to move up
-        // 7.5rem * 16 = 120px, which equals to reel item height
-        { transform: `translateY(-${(this.maxReelItems - 1) * (7.5 * 16)}px)`, filter: 'blur(0)' }
+        { transform: 'translateY(0px)', filter: 'blur(0)' }
       ],
       {
         duration: this.maxReelItems * 100, // 100ms for 1 item
@@ -191,6 +188,27 @@ export default class Slot {
 
     console.info('Displayed items: ', randomNames);
     console.info('Winner: ', randomNames[randomNames.length - 1]);
+
+    // Calculate the actual height of the reel after rendering
+    // This ensures proper animation even with wrapped/multi-line names
+    const reelHeight = reelContainer.scrollHeight;
+    const firstItemHeight = reelContainer.children[0]?.getBoundingClientRect().height || 120;
+    const translateDistance = reelHeight - firstItemHeight;
+
+    // Update animation with actual calculated distance
+    reelAnimation.effect = new KeyframeEffect(
+      reelContainer,
+      [
+        { transform: 'none', filter: 'blur(0)' },
+        { filter: 'blur(1px)', offset: 0.5 },
+        { transform: `translateY(-${translateDistance}px)`, filter: 'blur(0)' }
+      ],
+      {
+        duration: this.maxReelItems * 100,
+        easing: 'ease-in-out',
+        iterations: 1
+      }
+    );
 
     // Remove winner form name list if necessary
     if (shouldRemoveWinner) {
