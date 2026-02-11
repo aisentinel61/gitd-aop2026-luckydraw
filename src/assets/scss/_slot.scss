@@ -111,11 +111,12 @@
 
 .slots-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
 
@@ -150,10 +151,12 @@
 
 .slots-row {
   display: flex;
+  flex-wrap: nowrap;
   gap: 1rem;
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 100%;
 
   @each $name, $factor in $scale-factors {
     @if $name == 'ultra-wide' {

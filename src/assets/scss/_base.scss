@@ -110,11 +110,11 @@ body {
   min-height: min-content;
 
   @media #{$large-desktop} {
-    max-width: $screen-xxl;
+    max-width: 90%;
   }
 
   @media #{$ultra-wide} {
-    max-width: $screen-xxxl;
+    max-width: 95%;
   }
 }
 
